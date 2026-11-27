@@ -17,7 +17,7 @@
 *{box-sizing:border-box;min-width:0}
 html,body{margin:0;height:100%}
 body{background:var(--page);color:var(--ink);font:16px/1.4 Jost,Futura,"Century Gothic",system-ui,sans-serif;text-align:center;-webkit-tap-highlight-color:transparent;
-  display:flex;flex-direction:column;height:100dvh;min-height:440px;overflow:hidden;padding:env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left)}
+  display:flex;flex-direction:column;height:100dvh;min-height:320px;overflow:hidden;padding:env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left)}
 header{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,2fr) minmax(0,1fr);gap:10px;align-items:center;padding:10px 12px 8px;max-width:1340px;width:100%;margin:0 auto}
 .card{background:var(--cream);border:2px solid var(--red);outline:4px solid var(--tq);padding:4px 14px 6px;border-radius:4px 4px 22px 22px;box-shadow:0 7px 0 -3px rgba(74,26,20,.22)}
 .card small{display:block;font-size:13px;letter-spacing:.16em;text-transform:uppercase;color:var(--red);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
@@ -77,8 +77,24 @@ button:active{transform:translateY(1px)}button:disabled{opacity:.5;cursor:wait}
   .panel{grid-template-columns:repeat(8,minmax(0,1fr));grid-template-areas:"l r pow pow pow pow spin spin" "view view as as best best cue cue" "rc help strike strike strike strike strike strike"}
   #strike{min-height:44px;font-size:16px}.long{display:none}.short{display:inline}button{padding:0 6px}
 }
+@media(max-width:900px){.guest small{letter-spacing:.03em}.face{width:46px;height:46px}.guest{gap:7px}}
 @media(max-width:600px){.guest{flex-direction:column;gap:3px;padding:4px 2px}.face{width:42px;height:42px;padding:1px}.guest small{display:none}header{grid-template-columns:minmax(0,1fr) minmax(0,1.9fr) minmax(0,1fr);gap:6px;padding:8px 8px 6px}.card{padding:4px 6px 6px}.card small{display:none}.card h1{font-size:21px;letter-spacing:.07em}.guest small{letter-spacing:.02em}.guest b{font-size:18px}.cap{font-size:13px}main{padding:0 8px 8px;gap:8px}}
-@media(max-height:600px){.long{display:none}.short{display:inline}header{padding:6px 12px 4px}.card small{display:none}.cap{margin-top:4px}main{grid-template-columns:minmax(0,1fr) 196px}.panel{gap:6px}#strike{min-height:46px}.guest .dots{min-height:0}}
+@media(max-height:600px) and (min-aspect-ratio:1001/1000){.long{display:none}.short{display:inline}header{padding:6px 12px 4px}.card small{display:none}.cap{margin-top:4px}main{grid-template-columns:minmax(0,1fr) 196px}.panel{gap:6px}#strike{min-height:46px}.guest .dots{min-height:0}}
+@media(max-aspect-ratio:1/1) and (max-height:760px) and (min-width:440px){
+  .panel{grid-template-columns:repeat(9,minmax(0,1fr));grid-template-areas:"l r pow pow pow pow spin rc help" "view view as as best best cue strike strike";gap:6px}
+  .panel button{font-size:14px;padding:0 4px;min-width:0}#strike{font-size:15px;letter-spacing:.06em}
+  .long{display:none}.short{display:inline}
+  header{padding:6px 10px 4px}.card small{display:none}.cap{margin-top:4px}
+  .guest{flex-direction:row;gap:6px;padding:4px}.face{width:34px;height:34px;padding:1px}.guest small{display:none}.guest .dots{min-height:0}
+  main{padding:0 10px 10px;gap:8px}
+}
+@media(max-height:440px) and (min-aspect-ratio:1001/1000){
+  main{grid-template-columns:minmax(0,1fr) 224px}
+  .panel{grid-template-columns:repeat(4,minmax(0,1fr));grid-template-areas:"l spin spin r" "pow pow pow pow" "view view as as" "best best cue cue" "rc help strike strike";gap:5px}
+  #strike{font-size:15px;letter-spacing:.06em}
+  .panel button,#strike{min-height:40px}.pow{height:40px}.spin{width:46px;height:46px}
+  .face{width:40px;height:40px;padding:1px}.guest{padding:3px 6px}.guest .dots{display:none}.card h1{font-size:24px}header{padding:5px 12px 3px}main{padding:0 10px 8px;gap:10px}
+}
 @media(prefers-reduced-motion:reduce){.guest{transition:none}.guest.on .face{animation:none}}
 </style>
 </head>
