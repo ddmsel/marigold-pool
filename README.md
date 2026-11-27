@@ -13,6 +13,7 @@ A 3D eight-ball pool game that runs in your browser, with real physics, a comput
 * Play a friend on the same device, or the computer at three skill levels
 * **Assist** draws where the cue ball and the first two balls will go, worked out with the same physics as the real shot
 * **Best shot** finds and lines up a good shot for you, preferring direct pots, then one or two cushion banks
+* **Trails** behind moving balls make every ball easy to follow
 * **Replay** any shot, at full speed or in slow motion
 * Three camera views: Lounge, Above, and Cue (behind the cue ball)
 * Three themes with their own rooms, colours and ambient sound
@@ -81,6 +82,7 @@ Open **Menu** (☰), choose **The computer**, and pick Easy, Medium or Hard. You
 | A | Assist on or off |
 | B | Best shot |
 | C | Cue controls |
+| T | Trails on or off |
 | R | Reset controls |
 
 ## Themes
