@@ -577,6 +577,15 @@ const ro=new ResizeObserver(fit);ro.observe(stage);
 
 /* ---------- frame ---------- */
 const ax=new THREE.Vector3(),q=new THREE.Quaternion();
+/* raise the drawn cue so it clears balls and cushions behind the cue ball (visual only) */
+let cueTilt=.07;
+function cueClear(c,o){const ux=-Math.cos(aim),uy=-Math.sin(aim);let need=0;
+  const lift=(h,dist)=>{const run=dist-o;if(run<.5)return .75;return Math.min(.75,Math.atan(h/run))};
+  for(const b of balls){if(!b.on||b===c)continue;const dx=b.x-c.x,dy=b.y-c.y,t=dx*ux+dy*uy;if(t<=0||t>o+160)continue;
+    const lat=Math.abs(dx*uy-dy*ux);if(lat>R+1.7)continue;need=Math.max(need,lift(R+1.7,t-Math.sqrt(Math.max(0,(R+1.7)**2-lat*lat))))}
+  const ex=ux>0?(L-c.x)/ux:ux<0?(0-c.x)/ux:Infinity,ey=uy>0?(W-c.y)/uy:uy<0?(0-c.y)/uy:Infinity,te=Math.min(ex,ey);
+  need=Math.max(need,lift(TOP-R+1.4,te),lift(RT-R+1.6,te+CW));
+  return need}
 function sync(dt,t){
   for(const b of balls){const m=b.mesh;
     if(b.on){m.visible=true;const wx=b.x-L/2,wz=b.y-W/2,dx=wx-m.position.x,dz=wz-m.position.z,d=Math.hypot(dx,dz);
@@ -587,8 +596,7 @@ function sync(dt,t){
   cueOuter.visible=aimL.visible=ghost.visible=aiming;
   ring.visible=state==='place';if(ring.visible){ring.position.set(c.x-L/2,.08,c.y-W/2);ring.material.opacity=.6+Math.sin(t*6)*.3}
   if(aiming){const tr=trace(),ok=!tr.hit||legal(tr.hit.n);
-    cueOuter.position.set(c.x-L/2,R,c.y-W/2);cueOuter.rotation.y=-aim;cueInner.position.x=-(R+.4+power*12);cueInner.rotation.z=-.07-elev;
-    cueInner.position.y=0;
+    cueOuter.position.set(c.x-L/2,R,c.y-W/2);cueOuter.rotation.y=-aim;{const o0=R+.4,pull=power*12,tt=Math.max(.07+elev,cueClear(c,o0));cueTilt+=(tt-cueTilt)*Math.min(1,dt*14);cueInner.rotation.z=-cueTilt;cueInner.position.x=-(o0+pull*Math.cos(cueTilt));cueInner.position.y=pull*Math.sin(cueTilt)}
     const pl=assist||pkey()===lineKey;setLine(aimL,V(c.x+tr.dx*R,c.y+tr.dy*R,R*.35),V(tr.x,tr.y,R*.35));aimL.visible=!pl;
     ghost.position.copy(V(tr.x,tr.y));ghost.material.color.set(ok?'#fbf3e4':'#ffcf4a');
     objL.visible=defL.visible=!!tr.hit&&!pl;
