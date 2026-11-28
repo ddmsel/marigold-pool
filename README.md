@@ -1,4 +1,4 @@
-# Eight Ball: The Marigold Express
+# <img src="favicon.svg" width="40" alt=""> 8 Ball
 
 A 3D eight-ball pool game that runs in your browser, with real physics, a computer opponent, shot assist, replays, stats, and three hand-made themes. The whole game is one HTML file.
 

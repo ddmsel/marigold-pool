@@ -3,7 +3,11 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>The Marigold Express</title>
+<title>8 Ball</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 64 64%22%3E%3Cdefs%3E%3CradialGradient id=%22s%22 cx=%22.36%22 cy=%22.3%22 r=%22.78%22%3E%3Cstop offset=%220%22 stop-color=%22%23fff%22 stop-opacity=%22.6%22/%3E%3Cstop offset=%22.42%22 stop-color=%22%23fff%22 stop-opacity=%220%22/%3E%3Cstop offset=%221%22 stop-color=%22%23000%22 stop-opacity=%22.38%22/%3E%3C/radialGradient%3E%3C/defs%3E%3Crect width=%2264%22 height=%2264%22 rx=%2214%22 fill=%22%2317696f%22/%3E%3Cellipse cx=%2233%22 cy=%2256%22 rx=%2222%22 ry=%223.5%22 fill=%22%23000%22 opacity=%22.22%22/%3E%3Ccircle cx=%2219%22 cy=%2225%22 r=%2212%22 fill=%22%23e9a52a%22/%3E%3Ccircle cx=%2219%22 cy=%2225%22 r=%224.6%22 fill=%22%23fbf3e4%22/%3E%3Ccircle cx=%2219%22 cy=%2225%22 r=%2212%22 fill=%22url%28%23s%29%22/%3E%3Ccircle cx=%2245%22 cy=%2225%22 r=%2212%22 fill=%22%23b52a22%22/%3E%3Ccircle cx=%2245%22 cy=%2225%22 r=%224.6%22 fill=%22%23fbf3e4%22/%3E%3Ccircle cx=%2245%22 cy=%2225%22 r=%2212%22 fill=%22url%28%23s%29%22/%3E%3Ccircle cx=%2232%22 cy=%2240%22 r=%2215.5%22 fill=%22%231b1414%22/%3E%3Ccircle cx=%2232%22 cy=%2240%22 r=%227.2%22 fill=%22%23fbf3e4%22/%3E%3Ctext x=%2232%22 y=%2244.6%22 font-family=%22Arial Black,Arial,Helvetica,sans-serif%22 font-weight=%22900%22 font-size=%2212%22 text-anchor=%22middle%22 fill=%22%231b1414%22%3E8%3C/text%3E%3Ccircle cx=%2232%22 cy=%2240%22 r=%2215.5%22 fill=%22url%28%23s%29%22/%3E%3C/svg%3E">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="apple-mobile-web-app-title" content="8 Ball">
+<meta name="application-name" content="8 Ball">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -715,7 +719,7 @@ function applyTheme(id){
   feltM.color.set(T.felt);cushM.color.set(T.cush);wood.color.set(T.wood);woodDk.color.set(T.woodDk);doorM.color.set(T.door);paneM.color.set(T.pane);
   shade.material.color.set(T.shade);shade.material.emissive.set(T.shadeEm);fringe.material.color.set(T.fringe);scene.background.set(T.sky);hemi.groundColor.set(T.ground);ceil.material.color.set(T.ceil);
   if(!T.scroll)world.rotation.x=0;
-  document.title=T.title;$('sub').innerHTML=T.sub1+'<span class="long"> · '+T.sub2+'</span>';$('again').textContent=T.again;
+  document.title='8 Ball';$('sub').innerHTML=T.sub1+'<span class="long"> · '+T.sub2+'</span>';$('again').textContent=T.again;
   refreshNames();
 }
 function refreshNames(){const T=THEMES[theme],old=NAMES.slice();NAMES=[T.label+' No. 1',mode==='cpu'?'The computer':T.label+' No. 2'];{let t=$('line').textContent;old.forEach((o,i)=>{t=t.split(o).join(NAMES[i])});$('line').textContent=t}drawFace(1,mode==='cpu'?ROBOT:FACES[1]);
